@@ -2679,7 +2679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &311955265
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2689,7 +2689,7 @@ AudioSource:
   m_GameObject: {fileID: 311955264}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6150803433290740531, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 29be54e805a67054fa41265c3c61b2c5, type: 3}
   m_PlayOnAwake: 1
@@ -5507,7 +5507,7 @@ AudioSource:
   m_GameObject: {fileID: 635525296}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6624004927086942026, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 629f3e676e11380479494d1849635aef, type: 3}
   m_PlayOnAwake: 1
@@ -6782,7 +6782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &756239273
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6792,7 +6792,7 @@ AudioSource:
   m_GameObject: {fileID: 756239272}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1547621075849371622, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8f7e0dd525db90d428a80ab914882d58, type: 3}
   m_PlayOnAwake: 1
@@ -8213,7 +8213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &919513016
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8223,7 +8223,7 @@ AudioSource:
   m_GameObject: {fileID: 919513015}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8473058292413753631, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6764f660bc090124c89bf921b6402943, type: 3}
   m_PlayOnAwake: 1
@@ -9734,6 +9734,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1201514412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5724755452854879663, guid: e5a20e09ae9d63e44ae369e2cd11ca7a, type: 3}
+  m_PrefabInstance: {fileID: 1648705547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c1027d22a5e74418d32a1bfd1c4ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1202612210
 GameObject:
   m_ObjectHideFlags: 0
@@ -12042,6 +12053,7 @@ GameObject:
   - component: {fileID: 1507585926}
   - component: {fileID: 1507585925}
   - component: {fileID: 1507585924}
+  - component: {fileID: 1507585928}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -12134,6 +12146,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1507585928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507585923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574582725a4ee1d41a97d6c9b9dc8be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeEnter: {fileID: 6740787898572556801, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
+  oneItem: {fileID: 2228101781590997453, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
+  twoItems: {fileID: 8882420559232026444, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
+  threeItems: {fileID: 1034610449961228681, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
+  bossAggro: {fileID: -7302046700841855726, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
+  bossDefeat: {fileID: 5654971574750328227, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
 --- !u!1 &1533982367
 GameObject:
   m_ObjectHideFlags: 0
@@ -13485,7 +13515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1736162082
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13495,7 +13525,7 @@ AudioSource:
   m_GameObject: {fileID: 1736162081}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5111986641120450149, guid: 6dc6169b2663aee4d92ad76042adbeba, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 58f4a1d09b386a948809f867dd426877, type: 3}
   m_PlayOnAwake: 1
@@ -15538,6 +15568,14 @@ PrefabInstance:
       propertyPath: Wine
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 201294378063158622, guid: c45e588900dc57c46a6d45e432011d07, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 1201514412}
+    - target: {fileID: 201294378063158622, guid: c45e588900dc57c46a6d45e432011d07, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1507585928}
     - target: {fileID: 201294378063158622, guid: c45e588900dc57c46a6d45e432011d07, type: 3}
       propertyPath: meatText
       value: 

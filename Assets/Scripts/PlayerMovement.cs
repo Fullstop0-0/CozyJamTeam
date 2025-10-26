@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Audio;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -28,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     public List<string> items;
     //Animations
     public Animator animator;
+    public Music music;
+    public BossScript boss;
+    public int itemTotal;
     
 
     [SerializeField] TrailRenderer tr;
@@ -39,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
         items = new List<string>();
         meatText.text = $"Meat";
         tomatoText.text = $"Tomato Juice";
+        music.StoreEnter();
+        itemTotal = 0;
     }
 
     public void SetStrikethroughText()
@@ -68,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
             Debug.Log("Found" + itemType);
             items.Add(itemType);
+            itemTotal += 1;
 
             Destroy(collision.gameObject);
         }
@@ -77,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
             string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
             Debug.Log("Found" + itemType);
             items.Add(itemType);
+            itemTotal += 1;
 
             Destroy(collision.gameObject);
         }
@@ -87,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Found" + itemType);
             items.Add(itemType);
             SonFound();
+            itemTotal += 1;
+
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Door"))
@@ -159,7 +168,28 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = 5f;
         }
 
-        SetStrikethroughText();
+        if(boss.bossAggro == true)
+        {
+            music.BossAggro();
+        } 
+        else if (boss.bossAggro == false)
+        {
+            if (itemTotal == 0)
+            {
+                music.StoreEnter();
+            } else if (itemTotal == 1)
+            {
+                music.OneItem();
+            } else if (itemTotal == 2)
+            {
+                music.TwoItems();
+            } else if (itemTotal == 3)
+            {
+                music.ThreeItems();
+            }
+        }
+
+            SetStrikethroughText();
         flip();
         SonFound();
     }
@@ -194,3 +224,4 @@ public class PlayerMovement : MonoBehaviour
    // }
 
 }
+
