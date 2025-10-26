@@ -8,18 +8,29 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 5f;
+    private bool isFacingRight = true;
+    //Item Checker
     public bool Meat = false;
-    public bool Wine = false;
     public bool Tomato = false;
     public bool Son = false;
+    public bool door = false;
+    // Dashing
+    public bool dash = false;
+    //private bool canDash = true;
+   // private bool isDashing;
+    //private float dashSpeed = 10f;
+    //private float dashingTime = 0.2f;
+    //private float dashingCooldown = 1f;
+    // Checklist Text
     public TextMeshProUGUI meatText;
-    public TextMeshProUGUI wineText;
     public TextMeshProUGUI tomatoText;
     public TextMeshProUGUI successText;
     public List<string> items;
+    //Animations
     public Animator animator;
-    public bool door = false;
-    public bool dash = false;
+    
+
+    [SerializeField] TrailRenderer tr;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,8 +38,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         items = new List<string>();
         meatText.text = $"Meat";
-        wineText.text = $"Tomato Juice";
-        tomatoText.text = $"Wine";
+        tomatoText.text = $"Tomato Juice";
     }
 
     public void SetStrikethroughText()
@@ -39,11 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Tomato == true)
         {
-            wineText.text = $"Tomato Juice X";
-        }
-        if(Wine == true)
-        {
-            tomatoText.text = $"Wine X";
+            tomatoText.text = $"Tomato Juice X";
         }
         else
         {
@@ -59,15 +65,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Meat"))
         {
             Meat = true;
-            string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
-            Debug.Log("Found" + itemType);
-            items.Add(itemType);
-
-            Destroy(collision.gameObject);
-        }
-        if (collision.CompareTag("Wine"))
-        {
-            Wine = true;
             string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
             Debug.Log("Found" + itemType);
             items.Add(itemType);
@@ -94,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.CompareTag("Door"))
         {
-            if (Tomato && Meat && Wine && Son == true)
+            if (Tomato && Meat && Son == true)
             {
                 door = true;
                 successText.text = "I bought Everything I needed, and Found my Son.";
@@ -129,6 +126,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       // if ((isDashing)){
+           // return;
+       // }
+    
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -138,27 +139,58 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("speed", Mathf.Abs(moveX));
 
-        if(moveX != 0){
+        if(moveSpeed > 0){
             animator.SetBool("walk", true);
         }
-        else
+        if(moveSpeed == 0)
         {
             animator.SetBool("walk", false);
         }
 
-        if (Input.GetButtonDown("Shift"))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            dash = true;
-            moveSpeed = 20f;
             animator.SetBool("dash", true);
+            moveSpeed = 15f;
+            //StartCoroutine(Dash());
         }
-        else
+        if(!Input.GetKeyDown(KeyCode.LeftShift))
         {
-            dash = false;
+            animator.SetBool("dash", false);
+            moveSpeed = 5f;
         }
 
         SetStrikethroughText();
-
+        flip();
         SonFound();
     }
+
+    private void flip()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        if (isFacingRight && moveX <0 || !isFacingRight && moveX > 0f)
+        {
+            Vector3 localScale = transform.localScale;
+            isFacingRight = !isFacingRight;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
+    //private IEnumerator Dash()
+    //{
+       // canDash = false;
+       // isDashing = true;
+       // float originalGravity = rb.gravityScale;
+       // rb.gravityScale = 0f;
+       // rb.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, 0f);
+       // tr.emitting = true;
+       // yield return new WaitForSeconds(dashingTime);
+       // tr.emitting = false;
+       // rb.gravityScale = originalGravity;
+       // isDashing  = false;
+       // yield return new WaitForSeconds(dashingCooldown);
+       // canDash = true;
+
+   // }
+
 }

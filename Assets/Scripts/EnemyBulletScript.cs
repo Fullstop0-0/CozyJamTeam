@@ -1,4 +1,5 @@
-using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -7,27 +8,17 @@ public class EnemyBulletScript : MonoBehaviour
 
     private GameObject player;
     private Transform playerTransform;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     public float force;
     private float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
-        {
-            playerTransform = player.transform;
-        }
-        else
-        {
-            Debug.LogError("Player not found!");
-            Destroy(gameObject);
-        }
-
         Vector3 direction = player.transform.position - transform.position;
-        rb.angularVelocity = new Vector2(direction.x, direction.y).normalized * force;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
 
         float rot = Mathf.Atan2(-direction.y,-direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot +90);
