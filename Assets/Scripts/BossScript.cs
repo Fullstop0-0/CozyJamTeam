@@ -16,6 +16,7 @@ public class BossScript : MonoBehaviour
     public float detectionDistance = 4f;
     public float force;
     public Animator animator;
+    public bool bossAggro = false;
 
 
     void Start()
@@ -38,7 +39,10 @@ public class BossScript : MonoBehaviour
         {
             moveToPlayer();
             animator.SetFloat("distance", Mathf.Abs(distance));
-
+            bossAggro = true;
+        } else
+        {
+            bossAggro = false;
         }
         
     }
