@@ -26,7 +26,7 @@ public class EnemyShooting : MonoBehaviour
 
         if(distance < 4)
         {
-            animator.SetFloat("speed", Mathf.Abs(distance));
+            animator.SetFloat("distance", Mathf.Abs(distance));
 
             timer += Time.deltaTime;
             if (timer > 2)
